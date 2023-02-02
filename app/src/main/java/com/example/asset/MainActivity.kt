@@ -15,26 +15,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        getJsonFromAsset(this)
         val news = getNews()
         Log.d("getNews", "onCreate: "+ news)
-    }
-
-    private fun getJsonFromAsset(context: Context): News {
-
-        var jsonString: String? = null
-        val fileName = "newsApi.json"
-        try {
-            jsonString = context.assets.open(fileName)
-                .bufferedReader()
-                .use { it.readText() }
-        } catch (ioException: IOException) {
-            ioException.printStackTrace()
-        }
-        val newsType = object : TypeToken<News>() {}.type
-        val stringFromGson: News =  Gson().fromJson(jsonString,newsType)
-        Log.d("gsonString", "getJsonFromAsset: " +stringFromGson)
-        return stringFromGson
     }
 
     private fun getNews() : News {
