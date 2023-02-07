@@ -1,4 +1,4 @@
-package com.example.asset
+package com.example.asset.model
 
 data class Article(
     val author: String?,

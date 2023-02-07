@@ -1,22 +1,18 @@
 package com.example.asset
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.example.asset.model.News
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import org.json.JSONObject
-import java.io.FileReader
-import java.io.IOException
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val news = getNews()
-        Log.d("getNews", "onCreate: "+ news)
+        Log.d("getNews", "onCreate: $news")
     }
 
     private fun getNews() : News {
@@ -25,12 +21,4 @@ class MainActivity : AppCompatActivity() {
             object : TypeToken<News>() {}.type
         )
     }
-
-//        val jsonObject = JSONObject(data)
-//
-//        val author = jsonObject.getString("articles")
-//        val title = jsonObject.getInt("totalResults")
-//
-//        Log.d("readSampleJSON", "author : $author || title : $title")
-
-    }
+}
